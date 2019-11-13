@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Pos.h"
+#include "../Pos.h"
 #include "Streumon.h"
 
 

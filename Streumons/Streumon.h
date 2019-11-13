@@ -1,8 +1,8 @@
 #ifndef STREUMON_H_INCLUDED
 #define STREUMON_H_INCLUDED
 #include <iostream>
-#include "Pos.h"
-
+#include "../Pos.h"
+#include "../Oueurj.h"
 
 class Streumon {
 protected:
@@ -13,9 +13,9 @@ protected:
 
 public:
     Pos pos;
-    virtual void act(Oueurj &J);
+    virtual void act(Oueurj &J) = 0;
     int getHp() const;
-    void setHp(int amount);
+    void addHp(int amount);
 
 };
 

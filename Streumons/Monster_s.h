@@ -2,6 +2,7 @@
 #define MONSTER_S_H_INCLUDED
 #include <iostream>
 #include "Streumon.h"
+#include "../Oueurj.h"
 
 class Monster_s: public Streumon {
 private:
@@ -9,7 +10,7 @@ private:
     const int s_hp = 1;
 public:
     Monster_s(int x = -1, int y = -1);
-    void act(Oueurj &J);
+    void act(Oueurj &J){};
 
 
 };
