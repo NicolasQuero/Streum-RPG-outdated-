@@ -43,12 +43,10 @@
 		<Unit filename="Oueurj.h" />
 		<Unit filename="Pos.cpp" />
 		<Unit filename="Pos.h" />
-		<Unit filename="Streumon.cpp" />
-		<Unit filename="Streumon.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="Streumons/Monster_s.cpp" />
 		<Unit filename="Streumons/Monster_s.h" />
+		<Unit filename="Streumons/Streumon.cpp" />
+		<Unit filename="Streumons/Streumon.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

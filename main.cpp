@@ -10,9 +10,9 @@ using namespace std;
 
 
 int main() {
-    const string MAP_PATH = "maps/maptest.txt";
+    const string MAP_TEST = "maps/maptest.txt";
 
-    GameMap mapTest = GameMap(MAP_PATH);
+    GameMap mapTest = GameMap(MAP_TEST);
     Board board = Board(mapTest.getMapStrings());
     board.printMap();
     /*vector<string> mapStrings(mapTest.getMapStrings());

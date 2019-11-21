@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1573838676 source:c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\board.cpp
+	<iostream>
+	"Oueurj.h"
+	"Board.h"
+	"Streumons/Streumon.h"
+	"Streumons/Monster_s.h"
+	<vector>
+	<algorithm>
+
+1573672607 c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\oueurj.h
+	<iostream>
+	"Pos.h"
+
+1573672607 c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\pos.h
+	<iostream>
+
+1573837717 c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\board.h
+	<iostream>
+	<vector>
+	"Streumons/Streumon.h"
+
+1573672607 source:c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\gamemap.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	"GameMap.h"
+
+1573672607 c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\gamemap.h
+	<vector>
+
+1573676727 source:c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	"Oueurj.h"
+	"Board.h"
+	"GameMap.h"
+
+1573672607 source:c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\oueurj.cpp
+	<iostream>
+	"Oueurj.h"
+	"Pos.h"
+
+1573672607 source:c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\pos.cpp
+	<iostream>
+	<math.h>
+	"Pos.h"
+
+1573675643 source:c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\streumons\monster_s.cpp
+	<iostream>
+	"Monster_s.h"
+	"Streumon.h"
+
+1573676181 c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\streumons\monster_s.h
+	<iostream>
+	"Streumon.h"
+	"../Oueurj.h"
+
+1573838105 c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\streumons\streumon.h
+	<iostream>
+	"../Pos.h"
+	"../Oueurj.h"
+
+1573838478 source:c:\users\nicolas\desktop\mathématiques\langages objets avancés\streum-rpg-master\streumons\streumon.cpp
+	<iostream>
+	"../Pos.h"
+	"Streumon.h"
+

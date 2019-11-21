@@ -16,6 +16,7 @@ public:
     virtual void act(Oueurj &J) = 0;
     int getHp() const;
     void addHp(int amount);
+    char getType() const;
 
 };
 

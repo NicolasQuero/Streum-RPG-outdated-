@@ -10,7 +10,7 @@ private:
     const int s_hp = 1;
 public:
     Monster_s(int x = -1, int y = -1);
-    void act(Oueurj &J){};
+    void act(Oueurj &J){}; // Il faut définir la fonction abstraite implémentée
 
 
 };
