@@ -3,10 +3,13 @@
 #include "Board.h"
 #include "Streumons/Streumon.h"
 #include "Streumons/Monster_s.h"
+#include "Streumons/Monster_o.h"
 #include <vector>
 #include <algorithm>
 
 using namespace std;
+
+bool Board::gameOn = true;
 
 Board::Board(vector<string> mapStrings) { // each string from the list must have the same length
     setCharMaps(mapStrings); // stores the value of each character from mapText in charMap
@@ -19,7 +22,6 @@ void Board::setCharMaps(vector<string> mapStrings) {
     int j = 0;
     for (string line : mapStrings) { // On parcourt mapStrings avec line
         vector<char> charLine;
-        vector<char> monsterLine;
         for (char c : line) { // Pour chaque caractère de line
             if (find(monsterPossibleLetters.begin(), monsterPossibleLetters.end(), c) != monsterPossibleLetters.end()) { // Si la lettre réprésente un monstre i.e. est contenue dans monsterLetters
                 addMonster(c, i, j); // On ajoute un nouveau monstre associé à c avec addMonster() dans monstersOnMap
@@ -32,16 +34,22 @@ void Board::setCharMaps(vector<string> mapStrings) {
             j++;
         }
         charMap.push_back(charLine); // On met la ligne charLine dans charMap
-        monsterMap.push_back(monsterLine); // On met la ligne monsterLine dans monsterMap
         i++; j = 0;
     }
 }
 
 void Board::addMonster(char c, int i, int j) {
     switch ( c ) {
-        case 's':
-            Monster_s* M = new Monster_s(i, j);
-            monstersOnMap.push_back(M); //->push_back(new Monster_s(i, j));
+        case 's': {
+            Monster_s* Ms = new Monster_s(i, j);
+            monstersOnMap.push_back(Ms); //->push_back(new Monster_s(i, j));
+            break;
+        }
+        case 'o': {
+            Monster_o* Mo = new Monster_o(i, j);
+            monstersOnMap.push_back(Mo);
+            break;
+        }
     }
 }
 
@@ -80,6 +88,13 @@ void Board::printMap() const {
         cout << endl;
     }
 }
+
+bool Board::playTurn() {
+
+    J.act(charMap, monstersOnMap);
+}
+
+
 
 Board::~Board() {
     for (Streumon* monster : monstersOnMap) {

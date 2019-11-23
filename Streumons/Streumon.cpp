@@ -1,13 +1,14 @@
 #include <iostream>
+#include <vector>
 #include "../Pos.h"
+#include "../Oueurj.h"
 #include "Streumon.h"
 
 using namespace std;
 
 
 Streumon::Streumon(char monsterLetter, int x, int y, int hp) : pos( Pos(x, y) ), hp(hp), type(monsterLetter) {
-
-    cout << monsterLetter << " " << type << endl;
+    cout << monsterLetter << " " << pos << endl;
 }
 
 void Streumon::addHp(int amount) {
