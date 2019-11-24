@@ -18,18 +18,14 @@ int main() {
     const string MAP_TEST = "maps/maptest.txt";
 
     GameMap mapTest = GameMap(MAP_TEST);
-    Board board = Board(mapTest.getMapStrings());
-    /*vector<string> mapStrings(mapTest.getMapStrings());
-    for (string line : mapStrings) {
-        cout << line << endl;
-    }*/
+    Board board = Board(mapTest);
 
     board.printMap();
     int turn = 0;
-    cout << "********** La partie débute, nous sommes au tour " << turn << " **********" << endl;
+    cout << endl << "****************** La partie débute, nous sommes au tour " << turn << " ******************" << endl << endl;
     while (board.gameOn && board.playTurn()) {
         turn ++;
-        cout << "************* Le tour " << turn << " est terminé. *************" << endl;
+        cout << endl << "****************** Le tour " << turn << " est terminé. ******************" << endl << endl;
         board.printMap();
     }
 

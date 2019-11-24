@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Oueurj.h"
+#include "GameMap.h"
 #include "Board.h"
 #include "Streumons/Streumon.h"
 #include "Streumons/Monster_s.h"
@@ -11,10 +12,9 @@ using namespace std;
 
 bool Board::gameOn = true;
 
-Board::Board(vector<string> mapStrings) { // each string from the list must have the same length
-    setCharMaps(mapStrings); // stores the value of each character from mapText in charMap
+Board::Board(GameMap &gamemap) : gamemap(gamemap), score(0) { // each string from the list must have the same length
+    setCharMaps(gamemap.getMapStrings()); // stores the value of each character from mapText in charMap
     J = Oueurj(2, 3);
-    setPlayer(J);
 }
 
 void Board::setCharMaps(vector<string> mapStrings) {
@@ -56,7 +56,7 @@ void Board::addMonster(char c, int i, int j) {
 
 
 void Board::setPlayer(Oueurj &Joueur) {
-    playerPos = Pos(Joueur.pos.x, Joueur.pos.y);
+    J = Joueur;
 }
 
 char Board::getCharAt(int &x, int &y) const { return charMap[x][y]; }
@@ -66,26 +66,40 @@ void Board::printMap() const {
     for (Streumon* monster : monstersOnMap) {
         cout << monster->pos.x << ", " << monster->pos.y << " " << monster->getType() << endl;
     }
-    int x = 0; int y = 0;
+    int row = 0; int col = 0;
     for (vector<char> line : charMap) {
         for (char c : line) {
             bool monsterFound = false;
             for (Streumon* monster : monstersOnMap) {
-                if (monster->pos.x == x && monster->pos.y == y) {
-                    cout << monster->getType();
+                if (monster->pos.x == row && monster->pos.y == col) { // a monster was found!
+                    cout << monster->getType() << ' ';
                     monsterFound = true;
-                    break;
+                    break; // so we print the monster and no need to print the rest
                 }
             }
-            if (!monsterFound && x == J.pos.x && y == J.pos.y) // Si le joueur est à la position rendue on l'affiche
-                cout << 'J';
+            if (!monsterFound && row == J.pos.x && col == J.pos.y) // Si le joueur est à la position rendue on l'affiche
+                cout << 'J' << ' ';
             else if (!monsterFound) // Sinon on affiche la map
-                cout << c;
-            y++;
+                cout << c << ' ';
+            col++;
         }
-        x++;
-        y = 0;
+        printInformation(row);
+        row++;
+        col = 0;
         cout << endl;
+    }
+}
+
+void Board::printInformation(int &row) const {
+    switch ( row ) {
+    case 0:
+        cout << "    Score : " << score;
+        break;
+    case 2:
+        cout << "    HP : " << J.getHp();
+        break;
+    case 4:
+        cout << "    Téléportations : " << J.getTeleportsLeft();
     }
 }
 

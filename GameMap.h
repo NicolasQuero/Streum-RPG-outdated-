@@ -11,6 +11,7 @@ protected:
 public:
     GameMap();
     GameMap(const string MAP_PATH);
+    GameMap(const GameMap& gamemap);
     vector<string> getMapStrings() const;
 
 };

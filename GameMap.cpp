@@ -25,5 +25,8 @@ GameMap::GameMap() {
 GameMap::GameMap(const string MAP_PATH) {
     storeMap(MAP_PATH, mapStrings);
 }
+GameMap::GameMap(const GameMap &gamemap) {
+    mapStrings = gamemap.getMapStrings();
+}
 
 vector<string> GameMap::getMapStrings() const { return mapStrings; }

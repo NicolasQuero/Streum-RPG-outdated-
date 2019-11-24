@@ -23,6 +23,10 @@ public:
         x = pos2.x;
         y = pos2.y;
     }
+    void operator+=(Pos const& pos2) {
+        x += pos2.x;
+        y += pos2.y;
+    }
 
 
 };
@@ -30,6 +34,11 @@ public:
 inline Pos operator+(const Pos& pos1, const Pos& pos2) {
     Pos result = Pos(pos1.x + pos2.x, pos1.y + pos2.y);
     return result;
+}
+inline bool operator==(const Pos& pos1, const Pos& pos2) {
+    if (pos1.x == pos2.x && pos1.y == pos2.y)
+        return true;
+    return false;
 }
 
 
