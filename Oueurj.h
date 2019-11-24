@@ -16,8 +16,8 @@ public:
     Oueurj(Pos p);
     Oueurj(int x, int y);
     bool quitGame() const;
-    bool manageChoice1(string choice);
-    void movePlayer(int deplacement);
+    bool manageChoice1(string choice, vector<vector<char>> charMap);
+    void movePlayer(int deplacement, vector<vector<char>> charMap);
     void act(vector<vector<char>> charMap, vector<Streumon*> streumons);
 
 

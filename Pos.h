@@ -19,8 +19,18 @@ public:
         out << "(" << pos.x << ", " << pos.y << ")";
         return out;
     }
+    void operator=(Pos const& pos2) {
+        x = pos2.x;
+        y = pos2.y;
+    }
+
 
 };
+
+inline Pos operator+(const Pos& pos1, const Pos& pos2) {
+    Pos result = Pos(pos1.x + pos2.x, pos1.y + pos2.y);
+    return result;
+}
 
 
 

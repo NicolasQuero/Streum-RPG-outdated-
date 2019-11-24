@@ -43,6 +43,8 @@
 		<Unit filename="Oueurj.h" />
 		<Unit filename="Pos.cpp" />
 		<Unit filename="Pos.h" />
+		<Unit filename="Streumons/Monster_o.cpp" />
+		<Unit filename="Streumons/Monster_o.h" />
 		<Unit filename="Streumons/Monster_s.cpp" />
 		<Unit filename="Streumons/Monster_s.h" />
 		<Unit filename="Streumons/Streumon.cpp" />

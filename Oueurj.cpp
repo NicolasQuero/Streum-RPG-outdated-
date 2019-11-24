@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const Pos Oueurj::DEPLACEMENTS_POS[] = {Pos(-1,-1), Pos(0,-1), Pos(1, -1), Pos(-1,0), Pos(0,0), Pos(1,0), Pos(-1, 1), Pos(0, 1), Pos(1,1)};
+const Pos Oueurj::DEPLACEMENTS_POS[] = {Pos(1, -1), Pos(1, 0), Pos(1, 1), Pos(0, -1), Pos(0,0), Pos(0,1), Pos(-1, -1), Pos(-1, 0), Pos(-1, 1)};
 
 Oueurj::Oueurj() : pos() {
 
@@ -28,7 +28,7 @@ void Oueurj::act(vector<vector<char>> charMap, vector<Streumon*> streumons) {
         << "Se déplacer : d | Lancer un sort : s | Ouvrir l'inventaire : i | Quitter : q" << endl;
         string choice;
         cin >> choice;
-        tourEnded = manageChoice1(choice);
+        tourEnded = manageChoice1(choice, charMap);
     }
 
 }
@@ -50,15 +50,15 @@ bool Oueurj::quitGame() const {
 
 }
 
-bool Oueurj::manageChoice1(string choice) {
+bool Oueurj::manageChoice1(string choice, vector<vector<char>> charMap) {
     switch (choice[0]) {
     case 'd' : {
         cout << "Déplacement :" << endl << "Où désirez-vous aller ? (sur l'une des 8 cases autour du joueur)" << endl
-        << "1 bas gauche, 2 bas, 3 bas droite, 4 gauche, 6 droite, 7 haut gauche, 8 haut, 9 haut droite (pavé numérique)" << endl;
+        << "1 bas gauche, 2 bas, 3 bas droite, 4 gauche, 5 sur place, 6 droite, 7 haut gauche, 8 haut, 9 haut droite (pavé numérique)" << endl;
         string choice2;
         cin >> choice2;
         int deplacement = choice2[0] - '0'; // on convertit l'entier entré sous forme de string en entier
-        movePlayer(deplacement);
+        movePlayer(deplacement, charMap);
         return true;
     }
     case 's' : {
@@ -76,7 +76,14 @@ bool Oueurj::manageChoice1(string choice) {
 }
 
 
-void Oueurj::movePlayer(int deplacement) {
-
+void Oueurj::movePlayer(int deplacement, vector<vector<char>> charMap) {
+    if (0 < deplacement && deplacement < 10) {
+        Pos targetPos = pos + DEPLACEMENTS_POS[deplacement-1]; // Target position is the position of the player plus the vector associated to the movement
+        cout << pos << " | " << targetPos << " | " << deplacement << endl;
+        if (charMap[targetPos.x][targetPos.y] != 'x')
+            pos = targetPos;
+        else
+            cout << "COULDN'T MOVE" << endl;
+    }
 }
 

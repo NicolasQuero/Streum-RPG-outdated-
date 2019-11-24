@@ -62,7 +62,7 @@ void Board::setPlayer(Oueurj &Joueur) {
 char Board::getCharAt(int &x, int &y) const { return charMap[x][y]; }
 
 void Board::printMap() const {
-    cout << playerPos.x << ", " << playerPos.y << endl;
+    cout << J.pos.x << ", " << J.pos.y << endl;
     for (Streumon* monster : monstersOnMap) {
         cout << monster->pos.x << ", " << monster->pos.y << " " << monster->getType() << endl;
     }
@@ -77,7 +77,7 @@ void Board::printMap() const {
                     break;
                 }
             }
-            if (!monsterFound && x == playerPos.x && y == playerPos.y) // Si le joueur est à la position rendue on l'affiche
+            if (!monsterFound && x == J.pos.x && y == J.pos.y) // Si le joueur est à la position rendue on l'affiche
                 cout << 'J';
             else if (!monsterFound) // Sinon on affiche la map
                 cout << c;
