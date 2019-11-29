@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1575048885 source:c:\users\user\desktop\creationmap\creamapv2\creamap.cpp
+	"creaMap.h"
+
+1575050374 source:c:\users\user\desktop\creationmap\creamapv2\main.cpp
+	<iostream>
+	"creaMap.h"
+	"creaJeu.h"
+
+1575047356 c:\users\user\desktop\creationmap\creamapv2\creamap.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1575050782 c:\users\user\desktop\creationmap\creamapv2\creajeu.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1575050374 source:c:\users\user\desktop\creationmap\creamapv2\creajeu.cpp
+	"creaJeu.h"
+
