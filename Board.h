@@ -25,6 +25,7 @@ public:
     void setPlayer(Oueurj &J);
     char getCharAt(int &x, int &y) const;
     void printMap() const ;
+    void printCoordinatesAroundTheMap(vector<vector<char>> charMap, int row, int col) const;
     void printInformation(int &row) const;
     bool playTurn();
     ~Board();

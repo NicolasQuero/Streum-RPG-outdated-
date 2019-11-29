@@ -62,31 +62,55 @@ void Board::setPlayer(Oueurj &Joueur) {
 char Board::getCharAt(int &x, int &y) const { return charMap[x][y]; }
 
 void Board::printMap() const {
-    cout << J.pos.x << ", " << J.pos.y << endl;
+    /*cout << J.pos.x << ", " << J.pos.y << endl;
     for (Streumon* monster : monstersOnMap) {
         cout << monster->pos.x << ", " << monster->pos.y << " " << monster->getType() << endl;
-    }
+    }*/
     int row = 0; int col = 0;
     for (vector<char> line : charMap) {
+        printCoordinatesAroundTheMap(charMap, row, col); // print coordinates around the map
         for (char c : line) {
             bool monsterFound = false;
             for (Streumon* monster : monstersOnMap) {
                 if (monster->pos.x == row && monster->pos.y == col) { // a monster was found!
-                    cout << monster->getType() << ' ';
+                    cout << monster->getType() << "  ";
                     monsterFound = true;
                     break; // so we print the monster and no need to print the rest
                 }
             }
             if (!monsterFound && row == J.pos.x && col == J.pos.y) // Si le joueur est à la position rendue on l'affiche
-                cout << 'J' << ' ';
+                cout << 'J' << "  ";
             else if (!monsterFound) // Sinon on affiche la map
-                cout << c << ' ';
+                cout << c << "  ";
             col++;
         }
         printInformation(row);
         row++;
         col = 0;
         cout << endl;
+    }
+}
+
+void Board::printCoordinatesAroundTheMap(vector<vector<char>> charMap, int row, int col) const {
+    if (row == 0 && col == 0) { // We print the column indexes over the map
+        cout << "   "; // mise en page
+        for (char c : charMap[0]) {
+            if (col < 10) {
+                cout << col << "  "; // If the index of the column is 1 char long we print it with a space behind
+                col++;
+            }
+            else {
+                cout << col << " "; // If it's 2 chars long we print it without space behind
+                col++;
+            }
+        }
+        cout << endl << 0 << "  "; // after printing the top line we break the line and print the first 0 for the rows
+    }
+    else if (col == 0) {
+        if (row < 10)
+            cout << row << "  ";
+        else
+            cout << row << " ";
     }
 }
 
@@ -104,8 +128,15 @@ void Board::printInformation(int &row) const {
 }
 
 bool Board::playTurn() {
-
     J.act(charMap, monstersOnMap);
+    if (!J.isAlive()) {
+        for (int i = 0; i<5; i++)
+            cout << " ********** VOUS ÊTES MORT ! ********** " << endl;
+        gameOn = false;
+        return false;
+    }
+
+    return true;
 }
 
 

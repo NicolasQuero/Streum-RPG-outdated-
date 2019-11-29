@@ -20,9 +20,10 @@ public:
     Oueurj(int x, int y);
     int getHp() const { return hp; }
     int getTeleportsLeft() const { return teleportsLeft; }
+    bool useTeleport(int x, int y) { return false; } // Fonction à définir
     void inflictDamage(int dmg) {
         hp -= dmg;
-        if (hp < 0)
+        if (hp <= 0)
             is_alive = false;
     }
     bool isAlive() const { return is_alive; }
