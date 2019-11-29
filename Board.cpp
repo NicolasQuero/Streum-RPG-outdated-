@@ -68,20 +68,24 @@ void Board::printMap() const {
     }*/
     int row = 0; int col = 0;
     for (vector<char> line : charMap) {
-        printCoordinatesAroundTheMap(charMap, row, col); // print coordinates around the map
+        //printCoordinatesAroundTheMap(charMap, row, col); // print coordinates around the map
         for (char c : line) {
             bool monsterFound = false;
             for (Streumon* monster : monstersOnMap) {
                 if (monster->pos.x == row && monster->pos.y == col) { // a monster was found!
-                    cout << monster->getType() << "  ";
+                    cout << monster->getType();// << "  ";
                     monsterFound = true;
                     break; // so we print the monster and no need to print the rest
                 }
             }
             if (!monsterFound && row == J.pos.x && col == J.pos.y) // Si le joueur est à la position rendue on l'affiche
-                cout << 'J' << "  ";
-            else if (!monsterFound) // Sinon on affiche la map
-                cout << c << "  ";
+                cout << 'J';// << "  ";
+            else if (!monsterFound) { // Sinon on affiche la map
+                if (c == '#')
+                    cout << c;// << c << c;
+                else
+                    cout << c;// << "  ";
+            }
             col++;
         }
         printInformation(row);
@@ -129,6 +133,9 @@ void Board::printInformation(int &row) const {
 
 bool Board::playTurn() {
     J.act(charMap, monstersOnMap);
+    for (Streumon* monstre : monstersOnMap) {
+        monstre->act(J, charMap, monstersOnMap);
+    }
     if (!J.isAlive()) {
         for (int i = 0; i<5; i++)
             cout << " ********** VOUS ÊTES MORT ! ********** " << endl;

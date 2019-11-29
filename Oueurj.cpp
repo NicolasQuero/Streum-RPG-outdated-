@@ -82,7 +82,7 @@ void Oueurj::movePlayer(int deplacement, vector<vector<char>> &charMap, vector<S
         Pos targetPos = pos + DEPLACEMENTS_POS[deplacement-1]; // Target position is the position of the player plus the vector associated to the movement
         cout << pos << " | " << targetPos << " | " << deplacement << endl;
 
-        if (charMap[targetPos.x][targetPos.y] != 'x') { // If it's not a wall
+        if (charMap[targetPos.x][targetPos.y] != '#' && charMap[targetPos.x][targetPos.y] != 'X') { // If it's not a wall
             char monsterType = whichMonsterAt(targetPos, streumons); // We check the monster type at the target position (if there is one)
             if ( monsterType == ' ' ) // Si il n'y a pas de monstre on se déplace
                 pos = targetPos;

@@ -1,15 +1,15 @@
-xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-x             x            x
-x             x            x
-x             x$           x
-x             xxxxx        x
-x                          x
-x                          x
-x         s                x
-x                          -
-x                          x
-x             o            x
-x                          x
-x                          x
-x                          x
-xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+############################
+#             #            #
+#             #            #
+#             #$           #
+#             #####        #
+#                          #
+#                          #
+#         s                #
+#                          -
+#                          #
+#             o            #
+#                          #
+#                          #
+#                          #
+############################
