@@ -37,6 +37,9 @@ int main()
 void creeUnJeu()
 {
     cout<< endl << "Bienvenue dans la creation de Jeu" << endl <<endl;
+    creaJeu j;
+    j.creaMiniMap();
+    j.enregistrerJeu();
 }
 
 void creeUneMap()

@@ -297,20 +297,24 @@ char demandeAouB(std::string a,std::string b,std::string c,std::string d) // ver
     std::string AouB;
     std::cin.clear();
     std::cin >> AouB;
-    while(AouB!=a && AouB!=b && AouB!=c && AouB!=d)
+    std::string valeurs[]={a,b,c,d};
+    while(AouB!=valeurs[0] && AouB!=valeurs[1] && AouB!=valeurs[2] && AouB!=valeurs[3])
     {
-        if(d!="")
+        std::cout <<"la valeur est incorrect, merci de choisir  entre";
+        bool j=true;// le premier choix n'a pas avoir de "et" devant
+        for(int i=0;i<4;i++)
         {
-            std::cout <<"la valeur est incorrect, merci de choisir  entre ("<<a<<") et ("<<b<<")"<<" et ("<<c<<") et ("<<d<<")"<< std::endl;
+            if(valeurs[i]!=""&&j==true)
+            {
+                std::cout<<" ("<<valeurs[i]<<")";
+                j=false; //une cfois le premier choix passer on va pouvoir mettre des "et"
+            }
+            else if(valeurs[i]!="")
+            {
+                std::cout<<" et ("<<valeurs[i]<<")";
+            }
         }
-        else if (c!="")
-        {
-            std::cout <<"la valeur est incorrect, merci de choisir  entre ("<<a<<") et ("<<b<<")"<< std::endl;
-        }
-        else
-        {
-            std::cout <<"la valeur est incorrect, merci de choisir  entre ("<<a<<") et ("<<b<<")"<< std::endl;
-        }
+        std::cout <<std::endl;
         std::cin.clear();
         std::cin.ignore(256,'\n');
         std::cin>> AouB;
