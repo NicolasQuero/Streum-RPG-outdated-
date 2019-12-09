@@ -31,7 +31,7 @@ public:
     void validationChoix(std::string Map,std::vector<std::vector<std::string> > copieListeMiniMap);// laisse la possibilite de changer la map si elle ne conveint pas
 
     void enregistrerJeu();
-
+    std::vector<std::string> afficherListeMap();
     void afficherMiniMap();
 
 };

@@ -17,6 +17,7 @@ private:
 public:
 
     creaMap();
+    creaMap(std::string nomMap);
     ~creaMap();
 
     int getLongueur()const;
@@ -24,7 +25,6 @@ public:
     std::string getMapStrings(int i)const;
 
     void afficherMap()const;
-
     void creaMur(); //creation de mur
     void creaChoses(const std::string chose);//creation de chose peut prendre les valeurs :" Diamants, Streumons, Chargeurs" et cree les objets
     void modifierValeurMap(char a, int posX,int posY); //modifie un caractere en X,Y

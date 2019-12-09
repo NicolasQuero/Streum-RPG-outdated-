@@ -6,15 +6,11 @@ creaMap::creaMap()//cree la base de la map
     std::cout << "De quelle longueur voulez vous votre Map? (Axe des X)"<< std::endl << "(valeur de 10 a 100)"<<std::endl;
     int longMap;
     longMap=demandeInt(10,100);
-
     std::cout << "De quelle hauteur voulez vous votre Map? (Axe des Y)" << std::endl << "(valeur de 10 a 100)"<<std::endl; // on cree les deux valeurs qui seront la taille de la map
     int hautMap;
     hautMap=demandeInt(10,100);
-
-
-    m_longueur=longMap;
-    m_hauteur=hautMap;
-
+    m_longueur=longMap; // on enregistre la longueur de la map
+    m_hauteur=hautMap;// on enregistre la hauteur de la map
     std::string creationLigne[hautMap];
     for (int i(0);i<hautMap;i++)
     {
@@ -33,6 +29,26 @@ creaMap::creaMap()//cree la base de la map
     }
     afficherMap();
 }
+
+creaMap::creaMap(std::string nomMap)
+{
+    std::string MAP_PATH="Map/"+nomMap+".txt";
+    std::ifstream flux(MAP_PATH.c_str());
+    if(flux)
+    {
+        int i=0;
+        while(getline(flux,MAP_PATH))
+        {
+            mapStrings.push_back(MAP_PATH);
+            i++;
+        }
+        m_longueur=mapStrings[0].size();
+        m_hauteur=i;
+        flux.close();
+    }
+    else{std::cout << "ERREUR: Impossible d'ouvrir en lecture le fichier de la Map." << std::endl;}
+}
+
 
 creaMap::~creaMap()
 {
@@ -319,7 +335,7 @@ char demandeAouB(std::string a,std::string b,std::string c,std::string d) // ver
         std::cin.ignore(256,'\n');
         std::cin>> AouB;
     }
-    return (AouB[0])  ;
+    return (AouB[0]);
 }
 
 

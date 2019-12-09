@@ -26,45 +26,63 @@ int creaJeu::getTailleY()
     return m_listeMiniMap.size();
 }
 
-std::string creaJeu::choixMapAjoute()
+std::vector<std::string> creaJeu::afficherListeMap()
 {
-    bool i=false;
+    std::vector<std::string> listemap;
     std::cout<<"choisissez une map existante pour l'ajouter au Jeu"<<std::endl;
-    std::string liste="ListeMap/ListeMap.txt";
-    std::string MAP_PATH;
-    std::ifstream flux(liste.c_str()); //on ouvre en lecture la liste des nom de map et on affiche le nom des map existante.
+    std::string MAP_PATH="ListeMap/ListeMap.txt";
+    std::ifstream flux(MAP_PATH.c_str()); //on ouvre en lecture la liste des nom de map et on affiche le nom des map existante.
     if(flux)
     {
-        std::string ligne;
-        std::vector<std::string> listemap;
+        std::string MAP_PATH;
         std::cout<<"map disponible :"<<std::endl<<std::endl;
-        while(getline(flux,ligne))
+        while(getline(flux,MAP_PATH))// on parcours toutes les map existante mais on affiche pas les maps "interdite"
         {
-            if(ligne!="fin" && ligne!="debut")
+            if(MAP_PATH!="fin" && MAP_PATH!="debut")// map "interdite"
             {
-                std::cout<<ligne<<std::endl;
-                listemap.push_back(ligne);
+                std::cout<<MAP_PATH<<std::endl;
+                listemap.push_back(MAP_PATH);
             }
         }
         flux.close();
         std::cout<<std::endl;
-        std::cout<<"quelle map choisissez vous ?"<<std::endl;
+    }
+    else{std::cout << "ERREUR: Impossible d'ouvrir en lecture le fichier de liste des nom de Map." << std::endl;}
+    return listemap;
+}
+
+
+std::string creaJeu::choixMapAjoute()
+{
+    std::vector<std::string> listeMap=afficherListeMap();
+    bool i=false;
+    char aOUs=' ';
+    std::string nomMap;
         do
         {
-            std::cin >> MAP_PATH;
-            int tailleListeMap= listemap.size();
+            std::cout<<"Voulez vous afficher une Map ou selectionner definitivement la Map a ajouter ?"<<std::endl;
+            std::cout<<"afficher(a) ,selectionner(s)"<<std::endl;
+            aOUs = demandeAouB("a","s");
+            std::cout<<"quelle map choisissez vous ?"<<std::endl;
+            std::cin >> nomMap;
+            int tailleListeMap = listeMap.size();
             for(int j=0;j<tailleListeMap;j++)
             {
-                if(MAP_PATH==listemap[j])
+                if(nomMap == listeMap[j] && aOUs=='a')
+                {
+                        creaMap c(nomMap);
+                        c.afficherMap();
+                        afficherListeMap();
+                        i=true;
+                }
+                else if(nomMap == listeMap[j] && aOUs=='s' )
                 {
                         i=true;
                 }
             }
             if(i==false){std::cout<<"cette map n'existe pas"<<std::endl;}
-        }while(i==false);
-    }
-    else{std::cout << "ERREUR: Impossible d'ouvrir en lecture le fichier de liste des nom de Map." << std::endl;}
-    return MAP_PATH;
+        }while(i==false || aOUs=='a');
+    return nomMap;
 }
 
 
