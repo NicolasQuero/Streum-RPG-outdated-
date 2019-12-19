@@ -3,14 +3,14 @@
 Jeu::Jeu()
 {
     std::string MAP_PATH="JeuCree/Jeu.txt";
-    std::ifstream flux(MAP_PATH.c_str()); //on ouvre en lecture la liste des nom de map et on affiche le nom des map existante.
+    std::ifstream flux(MAP_PATH.c_str()); //on ouvre en lecture le Jeu cree par le joueur .
     if(flux)
     {
         std::string Map;
         std::vector<std::string> vectString;
-        while(getline(flux,Map))// on parcours toutes les map existante mais on affiche pas les maps "interdite"
+        while(getline(flux,Map))// on recree le jeu ligne apres ligne
         {
-            if(Map=="---------------")
+            if(Map=="---------------") //signe de delimitation entre les differente colonnes
             {
                 m_emplacementMap.push_back(vectString);
                 vectString.clear();
@@ -35,12 +35,12 @@ void Jeu::miniMap() // cree un tableau identique que m_emplacementMap avec valeu
 //1 si elle a ete deja visite,2 si le joueur est dessus
 {
     std::vector<int> vectInt;
-    for(int y=0; y<getTailleX()+2;y++){vectInt.push_back(-1);}
+    for(int y=0; y<getTailleX()+2;y++){vectInt.push_back(-1);}// on ajoute un cadre a la minimap pour pouvoir tester si c'est vide ou pas plus tard (**)
     m_miniMap.push_back(vectInt);
     for(int y=0; y<getTailleY();y++)
     {
         std::vector<int> vectInt;
-        vectInt.push_back(-1);
+        vectInt.push_back(-1);//(**)
         for(int x=0;x<getTailleX();x++)
         {
             if(m_emplacementMap[y][x].substr(0,6)=="Depart")
@@ -50,12 +50,12 @@ void Jeu::miniMap() // cree un tableau identique que m_emplacementMap avec valeu
                 m_posYj=y+1;
             }
             else if(m_emplacementMap[y][x].substr(0,7)!="       "){vectInt.push_back(0);}
-            else (vectInt.push_back(-1));
+            else (vectInt.push_back(-1));//(**)
         }
         vectInt.push_back(-1);
         m_miniMap.push_back(vectInt);
     }
-    m_miniMap.push_back(vectInt);
+    m_miniMap.push_back(vectInt);//(**)
 }
 
 int Jeu::getTailleX()
@@ -91,9 +91,9 @@ int Jeu::getValeurMiniMap(int posY,int posX) //permet de connaitre ou est le jou
 
 void Jeu::deplacementMiniMapGauche()
 {
-    m_miniMap[m_posYj][m_posXj]=1;
-    m_miniMap[m_posYj][m_posXj-1]=2;
-    m_posXj=m_posXj-1;
+    m_miniMap[m_posYj][m_posXj]=1;// 1 = map deja visitee
+    m_miniMap[m_posYj][m_posXj-1]=2;//2= le joueur est maintenant sur la Gauche
+    m_posXj=m_posXj-1;//nouvelle pos du joueur
 }
 
 void Jeu::deplacementMiniMapDroite()
@@ -128,7 +128,7 @@ void Jeu::afficherMiniMap()
         {
             if (m_miniMap[y][x]==2){std::cout<<".***J***.";}//presence du joueur
             else if((m_miniMap[y-1][x]>0||m_miniMap[y][x-1]>0||m_miniMap[y+1][x]>0||m_miniMap[y][x+1]>0||m_miniMap[y][x]>0) && m_miniMap[y][x]!=-1)
-            {
+            {                   //else if permet de savoir si une map a deja ete visitee ou si le joueur peut voir la presence d'une porte(si il  y a une porte, il y a une map derriere)
                 std::cout<<".*******.";
             }
             else(std::cout<<".       .");

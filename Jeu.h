@@ -27,6 +27,7 @@ public:
     int getPosXJoueur();
     int getPosYJoueur();
 
+    //permet de gerer les deplacement sur la MiniMap
     void deplacementMiniMapGauche();
     void deplacementMiniMapDroite();
     void deplacementMiniMapHaut();

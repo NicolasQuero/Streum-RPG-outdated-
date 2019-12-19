@@ -23,6 +23,8 @@ public:
     int getHauteur();
 
     void modifierValeurCarte(char a,int posY,int posX);
+
+    //cree une porte en fonction des Cartes adjacente et visitée
     void creaPorte(Jeu miniMap);
     void creaPorteHaut(int val);// val=0 carte non visite (porte fermée) val!=0 carte visite( porte ouverte)
     void creaPorteBas(int val);// 'X' porte fermee

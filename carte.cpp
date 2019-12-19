@@ -4,12 +4,12 @@ Carte::Carte(std::string nomCarte)
 {
     m_nomCarte=nomCarte;
     std::string MAP_PATH="Map/"+nomCarte+".txt";
-    std::ifstream flux(MAP_PATH.c_str()); //on ouvre en lecture la liste des nom de map et on affiche le nom des map existante.
+    std::ifstream flux(MAP_PATH.c_str()); //on ouvre en lecture la carte ou est le joueur.
     if(flux)
     {
         int i=0;
         std::string Ligne;
-        while(getline(flux,Ligne))// on parcours toutes les map existante mais on affiche pas les maps "interdite"
+        while(getline(flux,Ligne))
         {
             m_carte.push_back(Ligne);
             i++;
@@ -43,19 +43,19 @@ void Carte::modifierValeurCarte(char a, int posY,int posX) // modifie le charact
 
 void Carte::creaPorte(Jeu miniMap)
 {
-    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur()-1,miniMap.getPosXJoueur())!=-1)
+    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur()-1,miniMap.getPosXJoueur())!=-1)// on regarde si il y a une map au dessus d'ou est le joueur
     {
         creaPorteHaut(miniMap.getValeurMiniMap(miniMap.getPosYJoueur()-1,miniMap.getPosXJoueur()));
     }
-    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur()+1,miniMap.getPosXJoueur())!=-1)
+    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur()+1,miniMap.getPosXJoueur())!=-1)//...au dessous
     {
         creaPorteBas(miniMap.getValeurMiniMap(miniMap.getPosYJoueur()+1,miniMap.getPosXJoueur()));
     }
-    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur(),miniMap.getPosXJoueur()-1)!=-1)
+    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur(),miniMap.getPosXJoueur()-1)!=-1)//...a gauche
     {
         creaPorteGauche(miniMap.getValeurMiniMap(miniMap.getPosYJoueur(),miniMap.getPosXJoueur()-1));
     }
-    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur(),miniMap.getPosXJoueur()+1)!=-1)
+    if(miniMap.getValeurMiniMap(miniMap.getPosYJoueur(),miniMap.getPosXJoueur()+1)!=-1)//...a droite
     {
         creaPorteDroite(miniMap.getValeurMiniMap(miniMap.getPosYJoueur(),miniMap.getPosXJoueur()+1));
     }
@@ -64,8 +64,8 @@ void Carte::creaPorte(Jeu miniMap)
 void Carte::creaPorteHaut(int val)
 {
     char porte;
-    if (val==0){porte='X';}
-    else{porte=' ';}
+    if (val==0){porte='X';}// si la map a jamais ete visite la porte est fermee
+    else{porte=' ';}//sinon ouverte
     this->modifierValeurCarte(porte,0,(this->getLongueur())/2);
 }
 
