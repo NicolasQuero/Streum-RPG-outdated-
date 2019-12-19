@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1576794732 source:c:\users\user\desktop\jeu\main.cpp
+	<iostream>
+	"Jeu.h"
+	"carte.h"
+
+1576796525 c:\users\user\desktop\jeu\jeu.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1576601531 source:c:\users\user\desktop\jeu\jeu.cpp
+	"Jeu.h"
+
+1576678176 source:e:\jeu\jeu.cpp
+	"Jeu.h"
+
+1576678176 e:\jeu\jeu.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1576678230 source:e:\jeu\main.cpp
+	<iostream>
+	"Jeu.h"
+
+1576793578 source:c:\users\admin\desktop\jeu\jeu.cpp
+	"Jeu.h"
+
+1576793578 c:\users\admin\desktop\jeu\jeu.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1576794730 source:c:\users\admin\desktop\jeu\main.cpp
+	<iostream>
+	"Jeu.h"
+	"carte.h"
+
+1576794891 source:c:\users\admin\desktop\jeu\carte.cpp
+	"carte.h"
+
+1576791631 c:\users\admin\desktop\jeu\carte.h
+	"Jeu.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1576796262 source:c:\users\user\desktop\jeu\carte.cpp
+	"carte.h"
+
+1576796525 c:\users\user\desktop\jeu\carte.h
+	"Jeu.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
