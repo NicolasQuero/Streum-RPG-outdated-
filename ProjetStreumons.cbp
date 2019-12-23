@@ -33,22 +33,26 @@
 		</Compiler>
 		<Unit filename="Board.cpp" />
 		<Unit filename="Board.h" />
+		<Unit filename="Combat.cpp" />
+		<Unit filename="Combat.h" />
+		<Unit filename="Entities/Entity.cpp" />
+		<Unit filename="Entities/Entity.h" />
+		<Unit filename="Entities/Oueurj.cpp" />
+		<Unit filename="Entities/Oueurj.h" />
+		<Unit filename="Entities/Pos.cpp" />
+		<Unit filename="Entities/Pos.h" />
+		<Unit filename="Entities/Streumons/Monster_o.cpp" />
+		<Unit filename="Entities/Streumons/Monster_o.h" />
+		<Unit filename="Entities/Streumons/Monster_s.cpp" />
+		<Unit filename="Entities/Streumons/Monster_s.h" />
+		<Unit filename="Entities/Streumons/Streumon.cpp" />
+		<Unit filename="Entities/Streumons/Streumon.h" />
 		<Unit filename="GameMap.cpp">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="GameMap.h">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Oueurj.cpp" />
-		<Unit filename="Oueurj.h" />
-		<Unit filename="Pos.cpp" />
-		<Unit filename="Pos.h" />
-		<Unit filename="Streumons/Monster_o.cpp" />
-		<Unit filename="Streumons/Monster_o.h" />
-		<Unit filename="Streumons/Monster_s.cpp" />
-		<Unit filename="Streumons/Monster_s.h" />
-		<Unit filename="Streumons/Streumon.cpp" />
-		<Unit filename="Streumons/Streumon.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

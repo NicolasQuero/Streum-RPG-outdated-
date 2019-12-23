@@ -3,7 +3,8 @@
 #include <iostream>
 #include <vector>
 #include "GameMap.h"
-#include "Streumons/Streumon.h"
+#include "Entities/Entity.h"
+#include "Entities/Oueurj.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ private:
     int score;
     vector<vector<char>> charMap;
     const vector<char> monsterPossibleLetters = {'s', 'S', 'e', 'E', 'o', 'O'}; // vector of the possible letters associated to a monster
-    vector<Streumon*> monstersOnMap; // Un vector d'objets abstraits doit être un vector de pointeurs
+    vector<Entity*> monstersOnMap; // Un vector d'objets abstraits doit être un vector de pointeurs
     Oueurj J;
 
 public:

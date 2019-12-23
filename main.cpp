@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "Oueurj.h"
+#include "Entities/Oueurj.h"
 #include "Board.h"
 #include "GameMap.h"
 

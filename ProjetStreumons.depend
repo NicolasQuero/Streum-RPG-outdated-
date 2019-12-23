@@ -67,14 +67,15 @@
 	"../Pos.h"
 	"Streumon.h"
 
-1575038239 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\board.cpp
+1577113454 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\board.cpp
 	<iostream>
-	"Oueurj.h"
+	"Entities/Oueurj.h"
 	"GameMap.h"
 	"Board.h"
-	"Streumons/Streumon.h"
-	"Streumons/Monster_s.h"
-	"Streumons/Monster_o.h"
+	"Entities/Entity.h"
+	"Entities/Streumons/Streumon.h"
+	"Entities/Streumons/Monster_s.h"
+	"Entities/Streumons/Monster_o.h"
 	<vector>
 	<algorithm>
 
@@ -88,11 +89,12 @@
 	<iostream>
 	<string>
 
-1574984385 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\board.h
+1577113042 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\board.h
 	<iostream>
 	<vector>
 	"GameMap.h"
-	"Streumons/Streumon.h"
+	"Entities/Entity.h"
+	"Entities/Oueurj.h"
 
 1574378151 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\streumons\streumon.h
 	<iostream>
@@ -106,7 +108,7 @@
 	"Streumon.h"
 	"../Oueurj.h"
 
-1574634098 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\gamemap.cpp
+1576246016 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\gamemap.cpp
 	<iostream>
 	<fstream>
 	<vector>
@@ -115,11 +117,11 @@
 1575037117 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\gamemap.h
 	<vector>
 
-1574637345 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\main.cpp
+1576252912 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\main.cpp
 	<iostream>
 	<fstream>
 	<vector>
-	"Oueurj.h"
+	"Entities/Oueurj.h"
 	"Board.h"
 	"GameMap.h"
 	<windows.h>
@@ -159,4 +161,88 @@
 	<iostream>
 	"Streumon.h"
 	"../Oueurj.h"
+
+1577114382 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\oueurj.h
+	<iostream>
+	<vector>
+	"Entity.h"
+	"Pos.h"
+
+1577115942 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\streumons\streumon.h
+	<iostream>
+	<vector>
+	"../Pos.h"
+	"../Entity.h"
+
+1574635695 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\pos.h
+	<iostream>
+	<string>
+
+1577116001 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\entity.h
+	<vector>
+	<string>
+	<iostream>
+	"Pos.h"
+
+1577116501 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\streumons\monster_s.h
+	<iostream>
+	<vector>
+	"Streumon.h"
+	"../Oueurj.h"
+	"../Entity.h"
+
+1577116518 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\streumons\monster_o.h
+	<iostream>
+	"Streumon.h"
+	"../Oueurj.h"
+
+1574336395 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\pos.cpp
+	<iostream>
+	<math.h>
+	"Pos.h"
+
+1577116166 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\streumons\monster_o.cpp
+	<iostream>
+	"Monster_o.h"
+	"Streumon.h"
+	"../Entity.h"
+
+1577115990 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\entity.cpp
+	<iostream>
+	"Pos.h"
+	"Entity.h"
+
+1577114847 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\streumons\monster_s.cpp
+	<iostream>
+	<vector>
+	"Monster_s.h"
+	"Streumon.h"
+	"../Entity.h"
+
+1577114566 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\combat.cpp
+	<iostream>
+	"Entities/Oueurj.h"
+	"Entities/Streumons/Streumon.h"
+	"Entities/Pos.h"
+	"Entities/Entity.h"
+	"Combat.h"
+
+1577113782 c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\combat.h
+	"Entities/Entity.h"
+
+1577114419 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\oueurj.cpp
+	<iostream>
+	<vector>
+	"Oueurj.h"
+	"Pos.h"
+	"../Board.h"
+	"Entity.h"
+	"../Combat.h"
+
+1577115946 source:c:\users\nicoq\documents\mathématiques\langages objets avancés\projet streumons\projetstreumons\entities\streumons\streumon.cpp
+	<iostream>
+	<vector>
+	"../Pos.h"
+	"Streumon.h"
+	"../Entity.h"
 

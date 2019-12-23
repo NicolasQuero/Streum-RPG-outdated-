@@ -1,10 +1,11 @@
 #include <iostream>
-#include "Oueurj.h"
+#include "Entities/Oueurj.h"
 #include "GameMap.h"
 #include "Board.h"
-#include "Streumons/Streumon.h"
-#include "Streumons/Monster_s.h"
-#include "Streumons/Monster_o.h"
+#include "Entities/Entity.h"
+#include "Entities/Streumons/Streumon.h"
+#include "Entities/Streumons/Monster_s.h"
+#include "Entities/Streumons/Monster_o.h"
 #include <vector>
 #include <algorithm>
 
@@ -71,7 +72,7 @@ void Board::printMap() const {
         //printCoordinatesAroundTheMap(charMap, row, col); // print coordinates around the map
         for (char c : line) {
             bool monsterFound = false;
-            for (Streumon* monster : monstersOnMap) {
+            for (Entity* monster : monstersOnMap) {
                 if (monster->pos.x == row && monster->pos.y == col) { // a monster was found!
                     cout << monster->getType();// << "  ";
                     monsterFound = true;
@@ -132,8 +133,8 @@ void Board::printInformation(int &row) const {
 }
 
 bool Board::playTurn() {
-    J.act(charMap, monstersOnMap);
-    for (Streumon* monstre : monstersOnMap) {
+    J.act(J, charMap, monstersOnMap);
+    for (Entity* monstre : monstersOnMap) {
         monstre->act(J, charMap, monstersOnMap);
     }
     if (!J.isAlive()) {
@@ -149,9 +150,9 @@ bool Board::playTurn() {
 
 
 Board::~Board() {
-    for (Streumon* monster : monstersOnMap) {
+    for (Entity* monster : monstersOnMap) {
         delete monster;
     }
-    vector<Streumon*>().swap(monstersOnMap); // On libère la mémoire de monstersOnMap
+    vector<Entity*>().swap(monstersOnMap); // On libère la mémoire de monstersOnMap
 }
 
