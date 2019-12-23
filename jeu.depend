@@ -1,16 +1,15 @@
 # depslib dependency file v1.0
-1576794732 source:c:\users\user\desktop\jeu\main.cpp
+1576600821 source:c:\users\user\desktop\jeu\main.cpp
 	<iostream>
 	"Jeu.h"
-	"carte.h"
 
-1576796525 c:\users\user\desktop\jeu\jeu.h
+1576599564 c:\users\user\desktop\jeu\jeu.h
 	<iostream>
 	<fstream>
 	<vector>
 	<string>
 
-1576796525 source:c:\users\user\desktop\jeu\jeu.cpp
+1576601531 source:c:\users\user\desktop\jeu\jeu.cpp
 	"Jeu.h"
 
 1576678176 source:e:\jeu\jeu.cpp
@@ -35,12 +34,15 @@
 	<vector>
 	<string>
 
-1576794730 source:c:\users\admin\desktop\jeu\main.cpp
+1576927774 source:c:\users\admin\desktop\jeu\main.cpp
 	<iostream>
 	"Jeu.h"
 	"carte.h"
+	"personnage.h"
+	"Hero.h"
+	"Monstre.h"
 
-1576794891 source:c:\users\admin\desktop\jeu\carte.cpp
+1576893504 source:c:\users\admin\desktop\jeu\carte.cpp
 	"carte.h"
 
 1576791631 c:\users\admin\desktop\jeu\carte.h
@@ -50,13 +52,168 @@
 	<vector>
 	<string>
 
-1576796262 source:c:\users\user\desktop\jeu\carte.cpp
+1574980310 source:c:\users\admin\desktop\jeu\hero.cpp
+	"Hero.h"
+
+1574979788 c:\users\admin\desktop\jeu\hero.h
+	"personnage.h"
+
+1576926177 c:\users\admin\desktop\jeu\personnage.h
+	<string>
+	<iostream>
+	"Pos.h"
+
+1574980574 source:c:\users\admin\desktop\jeu\monstre.cpp
+	"Monstre.h"
+
+1574967248 c:\users\admin\desktop\jeu\monstre.h
+	"personnage.h"
+
+1576925970 source:c:\users\admin\desktop\jeu\personnage.cpp
+	"personnage.h"
+
+1574638802 c:\users\admin\desktop\jeu\pos.h
+	<iostream>
+	<string>
+
+1574638802 source:c:\users\admin\desktop\jeu\pos.cpp
+	<iostream>
+	<math.h>
+	"Pos.h"
+
+1577102206 source:c:\users\user\desktop\jjj\carte.cpp
 	"carte.h"
 
-1576796525 c:\users\user\desktop\jeu\carte.h
-	"Jeu.h"
+1577109046 c:\users\user\desktop\jjj\carte.h
 	<iostream>
 	<fstream>
 	<vector>
 	<string>
+	"Jeu.h"
+
+1577137503 c:\users\user\desktop\jjj\jeu.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1577138060 source:c:\users\user\desktop\jjj\hero.cpp
+	"Hero.h"
+
+1577138065 c:\users\user\desktop\jjj\hero.h
+	"FonctionUtile.h"
+	"personnage.h"
+
+1577137620 c:\users\user\desktop\jjj\personnage.h
+	<string>
+	<iostream>
+
+1577142291 c:\users\user\desktop\jjj\pos.h
+	<iostream>
+	<string>
+	"FonctionUtile.h"
+	"carte.h"
+	"personnage.h"
+	"Jeu.h"
+
+1577137503 source:c:\users\user\desktop\jjj\jeu.cpp
+	"Jeu.h"
+	"FonctionUtile.h"
+
+1577142304 source:c:\users\user\desktop\jjj\main.cpp
+	<iostream>
+	"Pos.h"
+	"Hero.h"
+	"Jeu.h"
+	"carte.h"
+	"Monstre.h"
+
+1577118594 c:\users\user\desktop\jjj\monstre.h
+	"personnage.h"
+
+1577138652 source:c:\users\user\desktop\jjj\monstre.cpp
+	"Monstre.h"
+
+1577134192 source:c:\users\user\desktop\jjj\personnage.cpp
+	"personnage.h"
+
+1577142405 source:c:\users\user\desktop\jjj\pos.cpp
+	<iostream>
+	"Pos.h"
+
+1577108857 c:\users\user\desktop\jjj\foncitonutile.h
+	<iostream>
+	<string>
+
+1577138652 c:\users\user\desktop\jjj\fonctionutile.h
+	<iostream>
+	<string>
+
+1577109342 source:c:\users\user\desktop\jjj\fonctionutile.cpp
+	"FonctionUtile.h"
+
+1577102206 source:e:\jjj\carte.cpp
+	"carte.h"
+
+1577109046 e:\jjj\carte.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+	"Jeu.h"
+
+1577109958 e:\jjj\jeu.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+
+1577109342 source:e:\jjj\fonctionutile.cpp
+	"FonctionUtile.h"
+
+1577117122 e:\jjj\fonctionutile.h
+	<iostream>
+	<string>
+
+1577119134 source:e:\jjj\hero.cpp
+	"Hero.h"
+
+1577118434 e:\jjj\hero.h
+	"FonctionUtile.h"
+	"personnage.h"
+
+1577118240 e:\jjj\personnage.h
+	<string>
+	<iostream>
+
+1577109970 source:e:\jjj\jeu.cpp
+	"Jeu.h"
+	"FonctionUtile.h"
+
+1577133478 source:e:\jjj\main.cpp
+	<iostream>
+	"Pos.h"
+	"Hero.h"
+	"Jeu.h"
+	"carte.h"
+	"Monstre.h"
+
+1577124428 e:\jjj\pos.h
+	<iostream>
+	<string>
+	"FonctionUtile.h"
+	"carte.h"
+
+1577118594 e:\jjj\monstre.h
+	"personnage.h"
+
+1577118808 source:e:\jjj\monstre.cpp
+	"Monstre.h"
+
+1577134192 source:e:\jjj\personnage.cpp
+	"personnage.h"
+
+1577130524 source:e:\jjj\pos.cpp
+	<iostream>
+	"Pos.h"
 

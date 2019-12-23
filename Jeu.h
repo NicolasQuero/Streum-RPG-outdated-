@@ -10,31 +10,30 @@
 class Jeu
 {
 private:
-    std::vector<std::vector<std::string> > m_emplacementMap;
-    std::vector<std::vector<int> > m_miniMap;
+    std::vector<std::vector<std::string> > m_emplacementMap; //permet de stocker le nom des map
+    std::vector<std::vector<int> > m_miniMap;  //permet de connaitre si les map on deja ete visite (-1=vide, 0=map non visite, 1=visite, 2=le joueur est sur cette map)
     int m_posXj;  //position du joueur en X sur la miniMap
     int m_posYj;  //position du joueur en Y sur la miniMap
 
 public:
     Jeu();
-    ~Jeu();
-    void miniMap();
 
+    void miniMap();
     int getTailleY();
     int getTailleX();
-    std::string getNomMap();
-    int getValeurMiniMap(int posY,int posX);
+    std::string getNomMap(); //permet de savoir sur quelle map est le joueur
+    int getValeurMiniMap(int posY,int posX); //permet de connaitre ou est le joueur sur la minimap
     int getPosXJoueur();
     int getPosYJoueur();
 
-    //permet de gerer les deplacement sur la MiniMap
     void deplacementMiniMapGauche();
     void deplacementMiniMapDroite();
     void deplacementMiniMapHaut();
     void deplacementMiniMapBas();
 
-    void afficherMiniMap();
-    void afficherSchemaJeu();
+    void afficherMiniMap2(); //permet de voir les "dessous de la map" (inutile dans le jeu)
+    void afficherMiniMap(); // permet d'afficher la miniMap pour le joueur
+    void afficherSchemaJeu(); //permet d'afficher le miniMap entiere
 };
 
 #endif // JEU_H_INCLUDED

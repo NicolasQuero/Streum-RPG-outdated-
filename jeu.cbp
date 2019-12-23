@@ -32,11 +32,21 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="FonctionUtile.cpp" />
+		<Unit filename="FonctionUtile.h" />
+		<Unit filename="Hero.cpp" />
+		<Unit filename="Hero.h" />
 		<Unit filename="Jeu.cpp" />
 		<Unit filename="Jeu.h" />
+		<Unit filename="Monstre.cpp" />
+		<Unit filename="Monstre.h" />
+		<Unit filename="Personnage.cpp" />
+		<Unit filename="Pos.cpp" />
+		<Unit filename="Pos.h" />
 		<Unit filename="carte.cpp" />
 		<Unit filename="carte.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="personnage.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
