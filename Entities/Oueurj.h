@@ -7,7 +7,8 @@
 
 class Oueurj : public Entity {
 private:
-    const static int HP_MAX, BASE_DMG;
+    const static int HP_MAX, BASE_DMG, MP_MAX, POWER_MAX, HEAL_COST, POWERATK_COST;
+    int mp, power;
     int teleportsLeft;
     static const Pos DEPLACEMENTS_POS [];
 public:
@@ -22,6 +23,8 @@ public:
     void movePlayer(int deplacement, vector<vector<char>> &charMap, vector<Entity*> &streumons);
     void act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons);
     bool playCombatTurn(Entity &E);
+    bool powerAttack(Entity &E);
+    bool heal();
     ~Oueurj() {};
 
 };

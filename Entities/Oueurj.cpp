@@ -10,13 +10,17 @@ using namespace std;
 
 const int Oueurj::BASE_DMG = 1;
 const int Oueurj::HP_MAX = 5;
+const int Oueurj::MP_MAX = 10;
+const int Oueurj::POWER_MAX = 3;
+const int Oueurj::HEAL_COST = 3;
+const int Oueurj::POWERATK_COST = 2;
 const Pos Oueurj::DEPLACEMENTS_POS[] = {Pos(1, -1), Pos(1, 0), Pos(1, 1), Pos(0, -1), Pos(0,0), Pos(0,1), Pos(-1, -1), Pos(-1, 0), Pos(-1, 1)};
 
-Oueurj::Oueurj() : Entity('j', -1, -1, HP_MAX, BASE_DMG), teleportsLeft(0) {}
+Oueurj::Oueurj() : Entity('j', -1, -1, HP_MAX, BASE_DMG), teleportsLeft(0), mp(MP_MAX), power(POWER_MAX) {}
 
-Oueurj::Oueurj(Pos p) : Entity('j', p, HP_MAX, BASE_DMG), teleportsLeft(0) {}
+Oueurj::Oueurj(Pos p) : Entity('j', p, HP_MAX, BASE_DMG), teleportsLeft(0), mp(MP_MAX), power(POWER_MAX) {}
 
-Oueurj::Oueurj(int row, int col) : Entity('j', row, col, HP_MAX, BASE_DMG), teleportsLeft(0) {}
+Oueurj::Oueurj(int row, int col) : Entity('j', row, col, HP_MAX, BASE_DMG), teleportsLeft(0), mp(MP_MAX), power(POWER_MAX) {}
 
 void Oueurj::act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     bool tourEnded = false;
@@ -28,10 +32,6 @@ void Oueurj::act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &stre
         tourEnded = manageChoice(choice, charMap, streumons);
     }
 
-}
-
-bool Oueurj::playCombatTurn(Entity& M) {
-    return attack(M);
 }
 
 bool Oueurj::quitGame() const {
@@ -113,4 +113,62 @@ int Oueurj::monsterIndexAt(Pos target, vector<Entity*> &streumons) {
         i++;
     }
     return -1; // no monster found, return empty char
+}
+
+    //////////////////////////////////
+    // BELOW ARE THE COMBAT METHODS //
+    //////////////////////////////////
+
+bool Oueurj::playCombatTurn(Entity& M) { // Method managing the turn of the player in the combat
+    char attackChoice;
+    bool turnOver = false;
+    while (!turnOver) {
+        cout << "Quelle attaque désirez-vous lancer ? Attaque normale : n, Attaque puissante : p, Soin : s" << endl;
+        cout << "(Il vous reste " << mp << " point(s) de mana)" << endl;
+        cin >> attackChoice;
+
+        switch ( attackChoice ) {
+        case 'n': {
+            attack(M); // Normal attack designed in the Entity class
+            return M.isAlive(); // This attack cannot fail so no need to check if it returns true
+        }
+        case 'p': {
+            if ( powerAttack(M) ) // More powerful attack
+                return M.isAlive();
+        }
+        case 's': {
+            if ( heal() ) // Heal the player
+                return true;
+        }
+        }
+    }
+}
+
+bool Oueurj::powerAttack(Entity& M) {
+    if (mp > POWERATK_COST) {
+        M.inflictDamage(power);
+        mp -= POWERATK_COST;
+        cout << "Vous infligez une attaque puissante !" << endl
+        << "L'ennemi n'a plus que " << M.getHp() << " point(s) de vie" << endl;
+        return true;
+    }
+    else {
+        cout << "Pas assez de mana ! Vous avez " << mp << " point(s) de mana (" << POWERATK_COST << " requis)" << endl;
+        return false; // Not enough mp
+    }
+}
+
+bool Oueurj::heal() {
+    if (mp > HEAL_COST) {
+        hp += power;
+        mp -= HEAL_COST;
+        if (hp > HP_MAX)
+            hp = HP_MAX;
+        cout << "Vous vous soignez, vous avez désormais " << hp << " points de vie" << endl;
+        return true;
+    }
+    else {
+        cout << "Pas assez de mana ! Vous avez " << mp << " point(s) de mana (" << HEAL_COST << " mp requis)" << endl;
+        return false; // Not enough mp
+    }
 }
