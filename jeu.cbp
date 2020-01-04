@@ -38,8 +38,6 @@
 		<Unit filename="Hero.h" />
 		<Unit filename="Jeu.cpp" />
 		<Unit filename="Jeu.h" />
-		<Unit filename="Monstre.cpp" />
-		<Unit filename="Monstre.h" />
 		<Unit filename="Personnage.cpp" />
 		<Unit filename="Pos.cpp" />
 		<Unit filename="Pos.h" />
@@ -47,6 +45,8 @@
 		<Unit filename="carte.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="personnage.h" />
+		<Unit filename="sMonstre.cpp" />
+		<Unit filename="sMonstre.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -117,11 +117,13 @@ void Hero::executionAttaque(Personnage &cible,char choix)
         std::cout<<"il lui reste "<<cible.getVie()<<" points de vies"<<std::endl<<std::endl;
     }
 }
+
 void Hero::afficherEtat()const
 {
     Personnage::afficherEtat();
     std::cout<<"j'ai encore "<<getMana()<<" points de Mana"<<std::endl;
-    std::cout<<"et il me reste "<<getPotion()<<" Potions"<<std::endl;
+    std::cout<<"il me reste "<<getPotion()<<" Potions"<<std::endl;
+    std::cout<<"et je possede "<<getArgent()<<" pieces d'or"<<std::endl;
 }
 
 void Hero::sePresenter()const

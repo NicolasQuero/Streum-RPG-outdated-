@@ -68,14 +68,14 @@ std::vector<int> Pos::deplacementPossible(int posChar)
     {
         for(int x=-1;x<2;x++)
         {
-            if(m_pos[(2*posChar)]+y<0||m_pos[(2*posChar)]+y>m_carte->getHauteur()){}
-            else if (m_pos[2*posChar+1]+x<0||m_pos[2*posChar+1]+x>m_carte->getLongueur()){}
-            else if(m_carte->getCharCarte(m_pos[(2*posChar)]+y,m_pos[2*posChar+1]+x)!='#'
-                                &&m_carte->getCharCarte(m_pos[(2*posChar)]+y,m_pos[2*posChar+1]+x)!='X')
+            if(m_pos[(2*posChar)]+y<0||m_pos[(2*posChar)]+y>m_carte->getHauteur()){} // on ne peux pas se deplace si nous somme en dehors du bord de la map
+            else if (m_pos[2*posChar+1]+x<0||m_pos[2*posChar+1]+x>m_carte->getLongueur()){} // on ne peux pas se deplace si nous somme en dehors du bord de la map
+            else if(m_carte->getCharCarte(m_pos[(2*posChar)]+y,m_pos[2*posChar+1]+x)!='#' //si il n'y a pas de mur on peux bouger
+                                &&m_carte->getCharCarte(m_pos[(2*posChar)]+y,m_pos[2*posChar+1]+x)!='X') // et si il n'y a pas de porte on peux bouger
             {
                 PlacesLibres.push_back(cas);
             }
-            cas++;
+            cas++; //chaque valeur de 'cas' correspond au deplacement du pavé numerique (voir ChoixDeplacement)
         }
     }
     return PlacesLibres;
@@ -88,17 +88,20 @@ void Pos::ChoixDeplacement(std::vector<int> PlacesLibres,int posChar,Jeu *j,Pers
     int a=PlacesLibres.size(), choix;
     for(int i=0;i<a;i++)
     {
-        if(PlacesLibres[i]==1){std::cout<<"en diagonale bas gauche (1)"<<std::endl;}
-        else if(PlacesLibres[i]==2){std::cout<<"en bas (2)"<<std::endl;}
-        else if(PlacesLibres[i]==3){std::cout<<"en diagonale bas droite (3)"<<std::endl;}
-        else if(PlacesLibres[i]==4){std::cout<<"a gauche (4)"<<std::endl;}
-        else if(PlacesLibres[i]==5){std::cout<<"ne pas bouger (5)"<<std::endl;}
-        else if(PlacesLibres[i]==6){std::cout<<"a droite (6)"<<std::endl;}
-        else if(PlacesLibres[i]==7){std::cout<<"en diagonale haut gauche (7)"<<std::endl;}
-        else if(PlacesLibres[i]==8){std::cout<<"en haut (8)"<<std::endl;}
-        else if(PlacesLibres[i]==9){std::cout<<"en diagonale haut droite (9)"<<std::endl;}
+        std::string phrase="";
+        if(PlacesLibres[i]==1){phrase="-en diagonale bas gauche (1)";}
+        else if(PlacesLibres[i]==2){phrase="-en bas (2)";}
+        else if(PlacesLibres[i]==3){phrase="-en diagonale bas droite (3)";}
+        else if(PlacesLibres[i]==4){phrase="-a gauche (4)";}
+        else if(PlacesLibres[i]==5){phrase="-ne pas bouger (5)";}
+        else if(PlacesLibres[i]==6){phrase="-a droite (6)";}
+        else if(PlacesLibres[i]==7){phrase="-en diagonale haut gauche (7)";}
+        else if(PlacesLibres[i]==8){phrase="-en haut (8)";}
+        else if(PlacesLibres[i]==9){phrase="-en diagonale haut droite (9)";}
+        std::cout<<(phrase+"                        ").substr(0,32);
+        if(i%2){std::cout<<std::endl;}
     }
-    std::cout<<std::endl<<"vous pouvez acceder aux informations avec (0)"<<std::endl<<"cela vous coute un tour"<<std::endl<<std::endl;
+    std::cout<<std::endl<<"-vous pouvez acceder aux informations avec (0)"<<std::endl<<"cela vous coute un tour"<<std::endl<<std::endl;
     std::cout<<"que voulez vous faire ?"<<std::endl;
     do
     {
@@ -186,6 +189,7 @@ std::vector<int> Pos::detectionMob(int posChar)
         {
             if(m_pos[(2*posChar)]+y<0||m_pos[(2*posChar)]+y>m_carte->getHauteur()-1){}
             else if (m_pos[2*posChar+1]+x<0||m_pos[2*posChar+1]+x>m_carte->getLongueur()-1){}
+            else if (x==0 && y==0){}//position du personnage qui detecte les mobs
             else if(m_carte->getCharCarte(m_pos[(2*posChar)]+y,m_pos[2*posChar+1]+x)=='s'
                                 ||m_carte->getCharCarte(m_pos[(2*posChar)]+y,m_pos[2*posChar+1]+x)=='S')
             {
@@ -205,11 +209,13 @@ void Pos::information(Jeu *j,Personnage *p)
     std::cout<<"information joueur (i)"<<std::endl;
     std::cout<<"afficher la Minimap (m)"<<std::endl;
     char choix=demandeAouB("i","m");
-    if(choix=='m'){j->afficherMiniMap();}
-    else if(choix=='i'){p->afficherEtat();}
+    if(choix=='m')
+        j->afficherMiniMap();
+    else if(choix=='i')
+        p->afficherEtat();
 }
 
-void Pos::afficherContenu()
+void Pos::afficherContenu() //en soit inutile pour le jeu ( outil de travail)
 {
     for(int i=0;i<getTaille();i++)
     {

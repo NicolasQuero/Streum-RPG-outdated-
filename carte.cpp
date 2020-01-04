@@ -78,7 +78,7 @@ void Carte::creaPorteHaut(int val,bool cle)
     int i=1;
     while(j!=true)
     {
-        if(m_carte[i][((getLongueur())/2)-1]!=' '||m_carte[i][(getLongueur())/2]!=' '||m_carte[i][((getLongueur())/2)+1]!=' ')
+        if(m_carte[i][((getLongueur())/2)-1]=='#'&&m_carte[i][(getLongueur())/2]=='#'&&m_carte[i][((getLongueur())/2)+1]=='#')
         {
             this->modifierValeurCarte(' ',i,(this->getLongueur())/2);
             i++;
@@ -97,7 +97,7 @@ void Carte::creaPorteBas(int val,bool cle)
     int i=1;
     while(j!=true)
     {
-        if(m_carte[this->getHauteur()-1-i][((getLongueur())/2)-1]!=' '||m_carte[this->getHauteur()-1-i][(getLongueur())/2]!=' '||m_carte[this->getHauteur()-1-i][((getLongueur())/2)+1]!=' ')
+        if(m_carte[this->getHauteur()-1-i][((getLongueur())/2)-1]=='#'&&m_carte[this->getHauteur()-1-i][(getLongueur())/2]=='#'&&m_carte[this->getHauteur()-1-i][((getLongueur())/2)+1]=='#')
         {
             this->modifierValeurCarte(' ',this->getHauteur()-1-i,(this->getLongueur())/2);
             i++;
@@ -116,7 +116,7 @@ void Carte::creaPorteGauche(int val,bool cle)
     int i=1;
     while(j!=true)
     {
-        if(m_carte[(getHauteur()/2)-1][i]!=' '||m_carte[getHauteur()/2][i]!=' '||m_carte[(getHauteur()/2)+1][i]!=' ')
+        if(m_carte[(getHauteur()/2)-1][i]=='#'&&m_carte[getHauteur()/2][i]=='#'&&m_carte[(getHauteur()/2)+1][i]=='#')
         {
             this->modifierValeurCarte(' ',(this->getHauteur())/2,i);
             i++;
@@ -135,7 +135,7 @@ void Carte::creaPorteDroite(int val,bool cle)
     int i=1;
     while(j!=true)
     {
-        if(m_carte[(getHauteur()/2)-1][getLongueur()-1-i]!=' '||m_carte[getHauteur()/2][getLongueur()-1-i]!=' '||m_carte[(getHauteur()/2)+1][getLongueur()-1-i]!=' ')
+        if(m_carte[(getHauteur()/2)-1][getLongueur()-1-i]=='#'&&m_carte[getHauteur()/2][getLongueur()-1-i]=='#'&&m_carte[(getHauteur()/2)+1][getLongueur()-1-i]=='#')
         {
             this->modifierValeurCarte(' ',(this->getHauteur())/2,this->getLongueur()-1-i);
             i++;
@@ -149,6 +149,8 @@ void Carte::afficherCarte()
     std::cout<<std::endl;
     for(int i=0; i<this->getHauteur(); i++)
     {
-        std::cout<<m_carte[i]<<std::endl;
+        for(int j=0; j <this->getLongueur();j++)
+            std::cout<<m_carte[i][j]<<" ";
+        std::cout<<std::endl;
     }
 }
