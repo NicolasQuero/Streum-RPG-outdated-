@@ -23,7 +23,6 @@ public:
     Board(GameMap &gamemap);
     void addMonster(char c, int i, int j);
     void setCharMaps(vector<string> mapStrings);
-    void setPlayer(Oueurj &J);
     char getCharAt(int &x, int &y) const;
     void printMap() const ;
     void printCoordinatesAroundTheMap(vector<vector<char>> charMap, int row, int col) const;

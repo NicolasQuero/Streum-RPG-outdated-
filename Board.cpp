@@ -13,9 +13,9 @@ using namespace std;
 
 bool Board::gameOn = true;
 
-Board::Board(GameMap &gamemap) : gamemap(gamemap), score(0) { // each string from the list must have the same length
+Board::Board(GameMap &gamemap) : gamemap(gamemap), score(0), J(Oueurj(2, 3)) { // each string from the list must have the same length
     setCharMaps(gamemap.getMapStrings()); // stores the value of each character from mapText in charMap
-    J = Oueurj(2, 3);
+   // J = Oueurj(2, 3);
 }
 
 void Board::setCharMaps(vector<string> mapStrings) {
@@ -55,10 +55,6 @@ void Board::addMonster(char c, int i, int j) {
 }
 
 
-
-void Board::setPlayer(Oueurj &Joueur) {
-    J = Joueur;
-}
 
 char Board::getCharAt(int &x, int &y) const { return charMap[x][y]; }
 
@@ -134,14 +130,20 @@ void Board::printInformation(int &row) const {
 
 bool Board::playTurn() {
     J.act(J, charMap, monstersOnMap);
-    for (Entity* monstre : monstersOnMap) {
-        monstre->act(J, charMap, monstersOnMap);
-    }
-    if (!J.isAlive()) {
-        for (int i = 0; i<5; i++)
-            cout << " ********** VOUS ÊTES MORT ! ********** " << endl;
-        gameOn = false;
-        return false;
+    if (gameOn) {
+        for (Entity* monstre : monstersOnMap) {
+            monstre->act(J, charMap, monstersOnMap);
+            if (!monstre->isAlive()) {
+                monstersOnMap.erase(remove(monstersOnMap.begin(), monstersOnMap.end(), monstre), monstersOnMap.end());
+                delete monstre;
+            }
+        }
+        if (!J.isAlive()) {
+            for (int i = 0; i<5; i++)
+                cout << " ********** VOUS ÊTES MORT ! ********** " << endl;
+            gameOn = false;
+            return false;
+        }
     }
 
     return true;

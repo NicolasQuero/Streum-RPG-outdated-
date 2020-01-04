@@ -14,7 +14,6 @@ const int Oueurj::MP_MAX = 10;
 const int Oueurj::POWER_MAX = 3;
 const int Oueurj::HEAL_COST = 3;
 const int Oueurj::POWERATK_COST = 2;
-const Pos Oueurj::DEPLACEMENTS_POS[] = {Pos(1, -1), Pos(1, 0), Pos(1, 1), Pos(0, -1), Pos(0,0), Pos(0,1), Pos(-1, -1), Pos(-1, 0), Pos(-1, 1)};
 
 Oueurj::Oueurj() : Entity('j', -1, -1, HP_MAX, BASE_DMG), teleportsLeft(0), mp(MP_MAX), power(POWER_MAX) {}
 
@@ -26,7 +25,9 @@ void Oueurj::act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &stre
     bool tourEnded = false;
     while (!tourEnded) { // Tant que le tour n'est pas valide on demande au joueur ce qu'il veut faire
         cout << "Que désirez-vous faire ?" << endl
-        << "Se déplacer : d | Lancer un sort : s | Ouvrir l'inventaire : i | Quitter : q" << endl;
+        << "Se déplacer :" << endl << "1 (bas gauche), 2 (bas), 3 (bas droite)" << endl << "4 (gauche), 5 (immobile), 6 (droite)" << endl
+        << "7 (haut gauche), 8 (haut), 9 (haut droite)" << endl << endl
+        << "Quitter : q" << endl;
         string choice;
         cin >> choice;
         tourEnded = manageChoice(choice, charMap, streumons);
@@ -51,31 +52,29 @@ bool Oueurj::quitGame() const {
 
 }
 
+bool isNumber(char c) {
+    char integers[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    for (char i : integers) {
+        if (c == i)
+            return true;
+    }
+    return false;
+}
+
 bool Oueurj::manageChoice(string choice, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
-    switch (choice[0]) {
-    case 'd' : { // Le joueur veut se déplacer
-        cout << "Déplacement :" << endl << "Où désirez-vous aller ? (sur l'une des 8 cases autour du joueur)" << endl
-        << "1 bas gauche, 2 bas, 3 bas droite, 4 gauche, 5 sur place, 6 droite, 7 haut gauche, 8 haut, 9 haut droite (pavé numérique)" << endl;
-        string choice2;
-        cin >> choice2;
-        int deplacement = choice2[0] - '0'; // on convertit l'entier entré ( de type string) en entier
+    if (choice[0] == 'q') { // Quitter le jeu choisi
+        return quitGame();
+        Board::setGameOn(false);
+    }
+    else if (isNumber(choice[0])) { // Le joueur veut se déplacer
+        int deplacement = choice[0] - '0'; // on convertit l'entier entré (de type string) en entier
         movePlayer(deplacement, charMap, streumons);
         return true;
     }
-    case 's' : { // Sorts choisis
-        cout << "Aucun sort." << endl;
-        return false;
-    }
-    case 'i' : { // Inventaire choisi
-        cout << "Pas d'inventaire." << endl;
-        return false;
-    }
-    case 'q' : { // Quitter le jeu choisi
-        return quitGame();
-    }
-    }
-}
+    return false;
 
+
+}
 
 void Oueurj::movePlayer(int deplacement, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     if (0 < deplacement && deplacement < 10) {

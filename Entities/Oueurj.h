@@ -10,7 +10,6 @@ private:
     const static int HP_MAX, BASE_DMG, MP_MAX, POWER_MAX, HEAL_COST, POWERATK_COST;
     int mp, power;
     int teleportsLeft;
-    static const Pos DEPLACEMENTS_POS [];
 public:
     Oueurj();
     Oueurj(Pos p);
@@ -21,7 +20,7 @@ public:
     int monsterIndexAt(Pos target, vector<Entity*> &streumons);
     bool manageChoice(string choice, vector<vector<char>> &charMap, vector<Entity*> &streumons);
     void movePlayer(int deplacement, vector<vector<char>> &charMap, vector<Entity*> &streumons);
-    void act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons);
+    virtual void act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons);
     bool playCombatTurn(Entity &E);
     bool powerAttack(Entity &E);
     bool heal();
