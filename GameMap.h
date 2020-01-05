@@ -24,6 +24,7 @@ public:
     void afficherGameMap();
     char getCharGameMap(int Y,int X);
     void modifierValeurGameMap(char a,int posY,int posX);
+    bool CleObtenu();
     Pos getPortesPos(char c);
     void creaPorte(Jeu *miniMap,bool cle=false);
     void creaPorteHaut(int val,bool cle);// val=0 carte non visite (porte fermée) val!=0 carte visite( porte ouverte)

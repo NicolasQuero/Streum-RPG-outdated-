@@ -65,16 +65,16 @@ char GameMap::getCharGameMap(int Y,int X)
 Pos GameMap::getPortesPos(char c) {
     switch(c) {
     case 'h':
-        return Pos(getLongueur()/2, 0);
+        return Pos(0,getLongueur()/2);
         break;
     case 'd':
-        return Pos(getLongueur(), getHauteur()/2);
+        return Pos(getHauteur()/2,getLongueur()-1);
         break;
     case 'b':
-        return Pos(getLongueur()/2, getHauteur());
+        return Pos(getHauteur()-1,getLongueur()/2);
         break;
     case 'g':
-        return Pos(0, getHauteur()/2);
+        return Pos(getHauteur()/2,0);
         break;
     }
 }
@@ -84,6 +84,18 @@ void GameMap::modifierValeurGameMap(char a, int posY,int posX) // modifie le cha
     this->mapStrings[posY][posX]=a;
 }
 
+bool GameMap::CleObtenu()
+{
+    bool cle= true;
+    for(int i=0; i<this->getHauteur(); i++)
+    {
+        for(int j=0; j <this->getLongueur();j++)
+        {
+            if(mapStrings[i][j]=='D'){cle=false;};
+        }
+    }
+    return cle;
+}
 
 
 void GameMap::creaPorte(Jeu *miniMap,bool cle)
