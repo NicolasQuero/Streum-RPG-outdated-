@@ -2,7 +2,9 @@
 #define GAMEMAP_H_INCLUDED
 
 #include "Jeu.h"
+#include "Entities/Pos.h"
 #include <vector>
+
 
 using namespace std;
 
@@ -22,6 +24,7 @@ public:
     void afficherGameMap();
     char getCharGameMap(int Y,int X);
     void modifierValeurGameMap(char a,int posY,int posX);
+    Pos getPortesPos(char c);
     void creaPorte(Jeu *miniMap,bool cle=false);
     void creaPorteHaut(int val,bool cle);// val=0 carte non visite (porte fermée) val!=0 carte visite( porte ouverte)
     void creaPorteBas(int val,bool cle);// 'X' porte fermee

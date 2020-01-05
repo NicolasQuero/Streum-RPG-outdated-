@@ -10,7 +10,7 @@ using namespace std;
 
 class Board {
 private:
-    GameMap gamemap;
+    GameMap &gamemap;
     int score;
     vector<vector<char>> charMap;
     const vector<char> monsterPossibleLetters = {'s', 'S', 'e', 'E', 'o', 'O'}; // vector of the possible letters associated to a monster
@@ -27,7 +27,7 @@ public:
     void printMap() const ;
     void printCoordinatesAroundTheMap(vector<vector<char>> charMap, int row, int col) const;
     void printInformation(int &row) const;
-    bool playTurn();
+    int playTurn();
     ~Board();
 
 };

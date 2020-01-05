@@ -128,7 +128,7 @@ void Board::printInformation(int &row) const {
     }
 }
 
-bool Board::playTurn() {
+int Board::playTurn() {
     J.act(J, charMap, monstersOnMap);
     if (gameOn) {
         for (Entity* monstre : monstersOnMap) {
@@ -142,11 +142,16 @@ bool Board::playTurn() {
             for (int i = 0; i<5; i++)
                 cout << " ********** VOUS ÊTES MORT ! ********** " << endl;
             gameOn = false;
-            return false;
+            return -2;
         }
     }
+    char portes[] = {'b', 'h', 'd', 'g'};
+    for (int i = 0; i < 4; i++) {
+        if (J.pos == gamemap.getPortesPos(portes[i]))
+            return i+1;
+    }
 
-    return true;
+    return 0;
 }
 
 

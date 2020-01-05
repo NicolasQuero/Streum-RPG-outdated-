@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "GameMap.h"
+#include "Entities/Pos.h"
 
 using namespace std;
 
@@ -61,11 +62,29 @@ char GameMap::getCharGameMap(int Y,int X)
     return mapStrings[Y][X];
 }
 
+Pos GameMap::getPortesPos(char c) {
+    switch(c) {
+    case 'h':
+        return Pos(getLongueur()/2, 0);
+        break;
+    case 'd':
+        return Pos(getLongueur(), getHauteur()/2);
+        break;
+    case 'b':
+        return Pos(getLongueur()/2, getHauteur());
+        break;
+    case 'g':
+        return Pos(0, getHauteur()/2);
+        break;
+    }
+}
 
 void GameMap::modifierValeurGameMap(char a, int posY,int posX) // modifie le charactere en X Y par 'a'
 {
     this->mapStrings[posY][posX]=a;
 }
+
+
 
 void GameMap::creaPorte(Jeu *miniMap,bool cle)
 {
