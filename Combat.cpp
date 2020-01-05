@@ -15,19 +15,9 @@ bool Combat::playCombatTurn() {
 }
 
 bool Combat::startCombat() {
-    cout << "Le combat entre " << J.getType() << " et " << M.getType() << " commence !" << endl << endl;
+    cout << "Le combat entre " << J.getType() << " et " << M.getType() << " commence !" << endl;
     cout << J.getType() << " a " << J.getHp() << " HP." << endl;
     cout << M.getType() << " a " << M.getHp() << " HP." << endl;
-    cout << "-----------------------" << endl;
-    cout << "-                     -" << endl;
-    cout << "-                     -" << endl;
-    cout << "-      " << J.getType() << "       " << M.getType() << "      -" << endl;
-    cout << "-                     -" << endl;
-    cout << "-   " << "HP : " << J.getHp() << "   HP : " << M.getHp() << "   -" << endl;
-    cout << "-                     -" << endl;
-    cout << "-                     -" << endl;
-    cout << "-----------------------" << endl;
-
     while (keepFighting) {
         keepFighting = J.playCombatTurn(M); // playCombatTurn returns false if E died hence we stop the fight
         if ( keepFighting )

@@ -22,7 +22,7 @@ void Monster_o::act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &s
 void Monster_o::moveMonster(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     bool moved = false;
     if ( J.pos.dist(this->pos) < DETECTION_RADIUS ) { // Si le joueur est à une distance inférieure au rayon de détection
-        int rand2 = rand()%2; // On choisit un nombre rand2 au hasard entre 1 et 2
+        int rand2 = rand()%3; // On choisit un nombre rand2 au hasard entre 1 et 2
         if (rand2 == 0) { // Pour rand2 == 0 on tente de se rapprocher du joueur sur l'axe des abscisses
             moved = moveMonsterInX(J, charMap, streumons);
             if (!moved) // moved vaut false si le déplacement a échoué, on essaye alors de se rapprocher sur l'axe des ordonnées

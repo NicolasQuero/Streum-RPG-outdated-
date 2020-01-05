@@ -13,7 +13,7 @@ using namespace std;
 
 bool Board::gameOn = true;
 
-Board::Board(GameMap &gamemap,Oueurj &j) : gamemap(gamemap), score(0), J(j) { // each string from the list must have the same length
+Board::Board(GameMap &gamemap) : gamemap(gamemap), score(0), J(Oueurj(2, 3)) { // each string from the list must have the same length
     setCharMaps(gamemap.getMapStrings()); // stores the value of each character from mapText in charMap
    // J = Oueurj(2, 3);
 }
@@ -128,7 +128,7 @@ void Board::printInformation(int &row) const {
     }
 }
 
-int Board::playTurn() {
+bool Board::playTurn() {
     J.act(J, charMap, monstersOnMap);
     if (gameOn) {
         for (Entity* monstre : monstersOnMap) {
@@ -142,16 +142,11 @@ int Board::playTurn() {
             for (int i = 0; i<5; i++)
                 cout << " ********** VOUS ÊTES MORT ! ********** " << endl;
             gameOn = false;
-            return -2;
+            return false;
         }
     }
-    char portes[] = {'b', 'h', 'd', 'g'};
-    for (int i = 0; i < 4; i++) {
-        if (J.pos == gamemap.getPortesPos(portes[i]))
-            return i+1;
-    }
 
-    return 0;
+    return true;
 }
 
 
