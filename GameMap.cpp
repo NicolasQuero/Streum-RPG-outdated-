@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -6,20 +7,6 @@
 #include "Entities/Pos.h"
 
 using namespace std;
-
-
-bool storeMap(const string mapPath, vector<string> &mapStrings) {
-    string line;
-    ifstream mapfile (mapPath);
-    if (mapfile.is_open()) {
-        while( getline( mapfile, line ) )
-            mapStrings.push_back(line);
-        mapfile.close();
-        return true;
-    }
-    return false;
-}
-
 
 GameMap::GameMap(const string nomMap) {
     std::string MAP_PATH="Map/"+nomMap+".txt";
@@ -38,9 +25,6 @@ GameMap::GameMap(const string nomMap) {
     }
     else{std::cout << "ERREUR: Impossible d'ouvrir en lecture le fichier de Map cree." << std::endl;}
 }
-/*GameMap::GameMap(const GameMap &gamemap) {
-    mapStrings = gamemap.getMapStrings();
-}*/
 
 vector<string> GameMap::getMapStrings() const { return mapStrings; }
 
@@ -84,6 +68,12 @@ void GameMap::modifierValeurGameMap(char a, int posY,int posX) // modifie le cha
 
 bool GameMap::CleObtenu()
 {
+    cle_obtenue=true;
+    for(int i=0; i<this->getHauteur(); i++)
+    {
+        for(int j=0; j <this->getLongueur();j++)
+            if(mapStrings[i][j]=='D'){cle_obtenue=false;}
+    }
     return cle_obtenue;
 }
 
