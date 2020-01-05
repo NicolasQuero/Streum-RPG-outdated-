@@ -13,14 +13,15 @@ using namespace std;
 
 bool Board::gameOn = true;
 
-Board::Board(GameMap &gamemap) : gamemap(gamemap), score(0), J(Oueurj(2, 3)) { // each string from the list must have the same length
-    setCharMaps(gamemap.getMapStrings()); // stores the value of each character from mapText in charMap
+Board::Board(GameMap &gamemap,Oueurj &j) : gamemap(gamemap), score(0), J(j) { // each string from the list must have the same length
+    setCharMaps(gamemap); // stores the value of each character from mapText in charMap
    // J = Oueurj(2, 3);
 }
 
-void Board::setCharMaps(vector<string> mapStrings) {
+void Board::setCharMaps(GameMap &gameMap) {
     int i = 0; // Coordonnées i,j d'un caractère parcouru
     int j = 0;
+    vector<string> mapStrings = gameMap.getMapStrings();
     for (string line : mapStrings) { // On parcourt mapStrings avec line
         vector<char> charLine;
         for (char c : line) { // Pour chaque caractère de line
@@ -128,11 +129,11 @@ void Board::printInformation(int &row) const {
     }
 }
 
-bool Board::playTurn() {
-    J.act(J, charMap, monstersOnMap);
+int Board::playTurn() {
+    J.act(J, gamemap, charMap, monstersOnMap);
     if (gameOn) {
         for (Entity* monstre : monstersOnMap) {
-            monstre->act(J, charMap, monstersOnMap);
+            monstre->act(J, gamemap, charMap, monstersOnMap);
             if (!monstre->isAlive()) {
                 monstersOnMap.erase(remove(monstersOnMap.begin(), monstersOnMap.end(), monstre), monstersOnMap.end());
                 delete monstre;
@@ -142,11 +143,17 @@ bool Board::playTurn() {
             for (int i = 0; i<5; i++)
                 cout << " ********** VOUS ÊTES MORT ! ********** " << endl;
             gameOn = false;
-            return false;
+            return -2;
         }
     }
+    char portes[] = {'b', 'h', 'd', 'g'};
+    for (int i = 0; i < 4; i++) {
+        if (J.pos == gamemap.getPortesPos(portes[i]))
+            return i+1;
+        cout << J.pos << " Porte : " << portes[i] << " " << gamemap.getPortesPos(portes[i]) << endl;
+    }
 
-    return true;
+    return 0;
 }
 
 

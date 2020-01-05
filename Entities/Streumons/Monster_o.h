@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Streumon.h"
 #include "../Oueurj.h"
+#include "../../GameMap.h"
 
 class Monster_o: public Streumon {
 private:
@@ -16,7 +17,7 @@ private:
     bool moveBy(Pos movement, Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons);
 public:
     Monster_o(int x = -1, int y = -1);
-    virtual void act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons); // Il faut définir la fonction abstraite implémentée
+    virtual void act(Entity &J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons); // Il faut définir la fonction abstraite implémentée
     void moveMonster(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons);
     bool playCombatTurn(Entity &E);
 

@@ -5,6 +5,7 @@
 #include "../Board.h"
 #include "Entity.h"
 #include "../Combat.h"
+#include "../GameMap.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ Oueurj::Oueurj(Pos p) : Entity('j', p, HP_MAX, BASE_DMG), teleportsLeft(0), mp(M
 
 Oueurj::Oueurj(int row, int col) : Entity('j', row, col, HP_MAX, BASE_DMG), teleportsLeft(0), mp(MP_MAX), power(POWER_MAX) {}
 
-void Oueurj::act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
+void Oueurj::act(Entity &J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     bool tourEnded = false;
     while (!tourEnded) { // Tant que le tour n'est pas valide on demande au joueur ce qu'il veut faire
         cout << "Que désirez-vous faire ?" << endl
@@ -32,6 +33,11 @@ void Oueurj::act(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &stre
         cin >> choice;
         tourEnded = manageChoice(choice, charMap, streumons);
     }
+    if (charMap[J.pos.x][J.pos.y] == 'D') {
+        gameMap.prendreCle();
+        charMap[J.pos.x][J.pos.y] = ' ';
+    }
+    cout << J.pos << "  |  " << charMap[J.pos.x][J.pos.y] << endl;
 
 }
 
@@ -79,12 +85,12 @@ bool Oueurj::manageChoice(string choice, vector<vector<char>> &charMap, vector<E
 void Oueurj::movePlayer(int deplacement, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     if (0 < deplacement && deplacement < 10) {
         Pos targetPos = pos + DEPLACEMENTS_POS[deplacement-1]; // Target position is the position of the player plus the vector associated to the movement
-        cout << pos << " | " << targetPos << " | " << deplacement << endl;
 
         if (charMap[targetPos.x][targetPos.y] != '#' && charMap[targetPos.x][targetPos.y] != 'X') { // If it's not a wall
             int monsterIndex = monsterIndexAt(targetPos, streumons); // We check the monster type at the target position (if there is one)
-            if ( monsterIndex == -1 ) // Si il n'y a pas de monstre on se déplace
+            if ( monsterIndex == -1 ) { // Si il n'y a pas de monstre on se déplace
                 pos = targetPos;
+            }
             else { // Sinon on se bat comme un vrai Oueurj (ou on ajoute le mob au Streumédex)
                 cout << "Monstre " << streumons[monsterIndex]->getType() << " rencontré !" << endl;
                 Combat combat = Combat(*this, *streumons[monsterIndex]);
@@ -96,11 +102,11 @@ void Oueurj::movePlayer(int deplacement, vector<vector<char>> &charMap, vector<E
                 else
                     cout << "Vous avez été vaincu..." << endl;
             }
+
         }
 
         else
             cout << "COULDN'T MOVE" << endl;
-
     }
 }
 
