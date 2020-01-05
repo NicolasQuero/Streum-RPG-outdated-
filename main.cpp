@@ -1,10 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+
+#include "Jeu.h"
 #include "Entities/Oueurj.h"
 #include "Board.h"
 #include "GameMap.h"
-#include "Jeu.h"
 #include "Entities/Pos.h"
 #include <windows.h>
 #pragma execution_character_set( "utf-8" )
@@ -26,7 +27,7 @@ int main() {
         int posX, posY;
 
         GameMap Map(j.getNomMap());
-        Map.creaPorte(&j,1);
+        Map.creaPorte(&j,Map.CleObtenu());
 
         if(k==2){posY=Map.getHauteur()-2,posX=(Map.getLongueur())/2;} // on vient d'en haut, on cree le joueur en bas
 
@@ -46,9 +47,12 @@ int main() {
         k = 0;
         while (k == 0) {
             k = board.playTurn();
+
             turn ++;
             cout << endl << "****************** Le tour " << turn << " est terminé. ******************" << endl << endl;
             board.printMap();
+                        Map.creaPorte(&j,Map.CleObtenu());
+            Board board = Board(Map,O);
         }
         switch (k) {
         case 1:
